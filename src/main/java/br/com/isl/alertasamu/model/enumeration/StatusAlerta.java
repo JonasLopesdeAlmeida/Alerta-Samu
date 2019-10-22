@@ -1,4 +1,4 @@
-package com.progweb.domain.enums;
+package br.com.isl.alertasamu.model.enumeration;
 
 public enum StatusAlerta {
 	
