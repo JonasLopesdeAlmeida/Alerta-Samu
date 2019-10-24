@@ -19,4 +19,13 @@ public class ServiceExceptionHandler {
 	    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	
 }
+	//Caso haja uma tentativa de exclusão de um alerta com status associados.
+	@ExceptionHandler(DataIntegrityException.class)
+	public ResponseEntity<StandardError> IntegridadeDados(DataIntegrityException e, HttpServletRequest request){
+		
+		StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), System.currentTimeMillis());
+         
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	
+}
 }

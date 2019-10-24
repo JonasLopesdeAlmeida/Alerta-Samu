@@ -4,10 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.isl.alertasamu.model.Alerta;
 import br.com.isl.alertasamu.repository.AlertaRepository;
+import br.com.isl.alertasamu.services.exceptions.DataIntegrityException;
 import br.com.isl.alertasamu.services.exceptions.ObjectNotFoundException;
 
 
@@ -38,4 +44,16 @@ public class AlertaService {
 		return repo.save(obj);
 	}
 
+	
+	public void deletar(Long id) {
+		buscar(id);
+		//abortando o delete para uma classe com objetos associados.
+		try {
+		repo.deleteById(id);
+		}
+	    catch(DataIntegrityViolationException e) {
+		 throw new DataIntegrityException("Não foi possível excluir um Alerta com Status");
+	    }
+		
+	}
 }
