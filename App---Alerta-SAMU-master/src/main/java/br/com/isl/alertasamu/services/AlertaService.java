@@ -33,5 +33,9 @@ public class AlertaService {
 		obj.setId(null);
 		return repo.save(obj);
 	}
+	public Alerta atualizar(Alerta obj) {
+		buscar(obj.getId());
+		return repo.save(obj);
+	}
 
 }

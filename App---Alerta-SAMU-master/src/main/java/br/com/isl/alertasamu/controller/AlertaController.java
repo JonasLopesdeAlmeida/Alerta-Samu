@@ -43,6 +43,12 @@ public class AlertaController {
 			return ResponseEntity.created(uri).build();
 		}
 		
+		@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+		public ResponseEntity<Void>update(@RequestBody Alerta obj,@PathVariable Long id) {
+			obj.setId(id);
+			serv.atualizar(obj);
+			return ResponseEntity.noContent().build();
+		}
 	
 	
 	
