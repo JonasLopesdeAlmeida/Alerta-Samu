@@ -19,11 +19,7 @@ import br.com.isl.alertasamu.repository.AtendimentoRepository;
 @SpringBootApplication
 public class SamuApplication implements CommandLineRunner  {
 
-	@Autowired
-	private AlertaRepository alertarepository;
 	
-	@Autowired
-	private AtendimentoRepository atendimentorepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SamuApplication.class, args);
@@ -32,20 +28,7 @@ public class SamuApplication implements CommandLineRunner  {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
-		Alerta ale1 = new Alerta(null,sdf.parse("31/10/2019 12:00"), 2345666, 456667, "acidente de moto", "");
-		Alerta ale2 = new Alerta(null,sdf.parse("01/11/2019 14:30"), 1345666, 456667,"acidente de carro", "");
-	    
-		Atendimento A1 = new Atendimento(null,"visualizado e sem obs", StatusAlerta.FINALIZADO);
-		A1.setAlerta(ale1);
-		
-		Atendimento A2 = new Atendimento(null,"visualizado e verificado mais de uma pessoa acidentada", StatusAlerta.PENDENTE);
-		A2.setAlerta(ale2);
-
-		
-    	atendimentorepository.saveAll(Arrays.asList(A1,A2));
-		alertarepository.saveAll(Arrays.asList(ale1,ale2));
 	}
 
 	

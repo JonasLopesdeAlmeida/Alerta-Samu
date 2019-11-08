@@ -1,10 +1,6 @@
 package br.com.isl.alertasamu.model;
 
 import java.io.Serializable;
-
-import java.text.SimpleDateFormat;
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

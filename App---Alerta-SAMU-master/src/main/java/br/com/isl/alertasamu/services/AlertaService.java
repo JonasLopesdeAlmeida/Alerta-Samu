@@ -54,4 +54,9 @@ public class AlertaService {
 	    }
 		
 	}
+	
+	public List<Alerta> Buscartodos(){
+		
+		return repo.findAll();
+	}
 }

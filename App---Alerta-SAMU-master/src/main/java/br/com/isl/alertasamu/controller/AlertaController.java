@@ -18,8 +18,6 @@ import br.com.isl.alertasamu.services.AlertaService;
 @RequestMapping(value="/Alertas")
 public class AlertaController {
 
-	
-	
 		
 		@Autowired
 		private AlertaService serv;
@@ -56,6 +54,5 @@ public class AlertaController {
 			return ResponseEntity.noContent().build();
 		}
 	
-	
-	
+
 }

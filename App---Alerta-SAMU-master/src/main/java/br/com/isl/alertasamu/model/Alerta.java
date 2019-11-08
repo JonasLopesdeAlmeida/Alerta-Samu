@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -26,7 +29,9 @@ public class Alerta implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL, mappedBy ="alerta" )
 	private Atendimento atendimento ;
 	
-
+	@ManyToOne
+	@JoinColumn(name="usuarioapp_id")
+    private UsuarioApp usuarioapp;
 	
     public Alerta() {
     	
