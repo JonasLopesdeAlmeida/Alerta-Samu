@@ -10,34 +10,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Alerta implements Serializable{
+public class Alerta implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date instante;
 	private double latitude;
 	private double longitude;
 	private String observacao;
-	private String foto;
-	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy ="alerta" )
-	private Atendimento atendimento ;
-	
-	@ManyToOne
-	@JoinColumn(name="usuarioapp_id")
-    private UsuarioApp usuarioapp;
-	
-    public Alerta() {
-    	
-    }
+	private byte[] foto;
 
-	public Alerta(Long id, Date instante, double latitude, double longitude, String observacao, String foto) {
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "id_usuarioapp")
+	private UsuarioApp usuarioapp;
+
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "alerta")
+	private Atendimento atendimento;
+
+	public Alerta() {
+
+	}
+
+	public Alerta(Long id, Date instante, double latitude, double longitude, String observacao, byte[] foto,
+			UsuarioApp usuarioapp) {
 		super();
 		this.id = id;
 		this.instante = instante;
@@ -45,6 +49,8 @@ public class Alerta implements Serializable{
 		this.longitude = longitude;
 		this.observacao = observacao;
 		this.foto = foto;
+		this.usuarioapp = usuarioapp;
+
 	}
 
 	public Long getId() {
@@ -87,45 +93,28 @@ public class Alerta implements Serializable{
 		this.observacao = observacao;
 	}
 
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
-	
-	
 
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public Atendimento getAtendimento() {
+		return atendimento;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Alerta other = (Alerta) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
 	}
 
+	public UsuarioApp getUsuarioapp() {
+		return usuarioapp;
+	}
 
+	public void setUsuarioapp(UsuarioApp usuarioapp) {
+		this.usuarioapp = usuarioapp;
+	}
 
-    
-    
-	
 }

@@ -1,13 +1,15 @@
 package br.com.isl.alertasamu.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.isl.alertasamu.model.enums.StatusAlerta;
 
@@ -16,26 +18,32 @@ public class Atendimento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String observacaoadm;
 	private Integer status;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="alerta_id")
 	@MapsId
 	private Alerta alerta;
 	
+	@ManyToOne
+	@JoinColumn(name="userSamu_id")
+	private UsuarioSamu userSamu;
+
     public Atendimento() {
     	
     	
     }
 	
-	public Atendimento(Long id,String observacaoadm, StatusAlerta status) {
+	public Atendimento(Long id,String observacaoadm, StatusAlerta status, Alerta alerta) {
 		super();
 		this.id = id;
 		this.observacaoadm = observacaoadm;
 		this.status = status.getCod();
+		this.alerta = alerta;
+		
 	}
 	
 
@@ -75,6 +83,16 @@ public class Atendimento implements Serializable {
 
 	public void setObservacao(String observacaoadm) {
 		this.observacaoadm = observacaoadm;
+	}
+	
+	
+
+	public UsuarioSamu getUserSamu() {
+		return userSamu;
+	}
+
+	public void setUserSamu(UsuarioSamu userSamu) {
+		this.userSamu = userSamu;
 	}
 
 	@Override

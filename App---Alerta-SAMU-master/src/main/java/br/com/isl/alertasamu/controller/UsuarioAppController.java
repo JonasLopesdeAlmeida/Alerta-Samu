@@ -14,7 +14,7 @@ import br.com.isl.alertasamu.model.UsuarioApp;
 import br.com.isl.alertasamu.services.UsuarioAppService;
 
 @RestController
-@RequestMapping(value="/usuarios-app")
+@RequestMapping(value="/usuarioApp")
 public class UsuarioAppController {
 	
 	@Autowired

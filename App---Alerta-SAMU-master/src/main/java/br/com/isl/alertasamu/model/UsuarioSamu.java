@@ -1,29 +1,31 @@
 package br.com.isl.alertasamu.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
+import javax.persistence.OneToMany;
 
 @Entity
 public class UsuarioSamu {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String sexo;
 	private String setor;
 	private String senha;
-	
-	
+
+//	@OneToMany(mappedBy="usuariosamu")
+//	private List<Atendimento> atendimentos = new ArrayList<>();
+
 	public UsuarioSamu() {
-		
-		
+
 	}
-	
 
 	public UsuarioSamu(Long id, String nome, String sexo, String setor, String senha) {
 		super();
@@ -37,12 +39,15 @@ public class UsuarioSamu {
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -51,36 +56,33 @@ public class UsuarioSamu {
 		return sexo;
 	}
 
-
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-
-
 
 	public String getSetor() {
 		return setor;
 	}
 
-
-
 	public void setSetor(String setor) {
 		this.setor = setor;
 	}
-
-
 
 	public String getSenha() {
 		return senha;
 	}
 
-
-
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-
+//	public List<Atendimento> getAtendimento() {
+//		return atendimentos;
+//	}
+//
+//	public void setAtendimento(List<Atendimento> atendimentos) {
+//		this.atendimentos = atendimentos;
+//	}
 
 	@Override
 	public int hashCode() {
@@ -89,6 +91,7 @@ public class UsuarioSamu {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -105,13 +108,5 @@ public class UsuarioSamu {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
+
 }
-
-	
-
-

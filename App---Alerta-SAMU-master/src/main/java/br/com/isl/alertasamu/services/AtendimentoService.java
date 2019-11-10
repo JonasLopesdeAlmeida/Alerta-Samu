@@ -40,7 +40,7 @@ public class AtendimentoService {
 	}
 	public void deletar(Long id) {
 		buscar(id);
-		//abortando o delete para uma classe com objetos associados.
+	
 		try {
 		repo.deleteById(id);
 		}
