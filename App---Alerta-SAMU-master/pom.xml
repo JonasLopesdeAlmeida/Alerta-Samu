@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.projeto.SAMU</groupId>
-	<artifactId>SAMU</artifactId>
+	<artifactId>App---Alerta-SAMU-master</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SAMU</name>
 	<description>Projeto desenvolvimento web - alerta SAMU</description>
